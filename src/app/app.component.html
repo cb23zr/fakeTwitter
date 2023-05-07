@@ -12,7 +12,8 @@
     <div fxFlex fxLayout fxHide.xs>
       <ul class="menu" fxLayout fxLayoutGap="10px">
         <li><a routerLink="/main">Főoldal</a></li>
-        <li><a routerLink="/login">Bejelentkezés</a></li>
+        <li *ngIf="!(loggedInUser)"><a routerLink="/login">Bejelentkezés</a></li>
+        <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logOut()">Kijelentkezés</a></li>
         <li><a routerLink="/registration">Regisztráció</a></li>
         <li><a routerLink="/profile">Profil</a></li>
       </ul>

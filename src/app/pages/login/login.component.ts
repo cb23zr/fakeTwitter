@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Router} from "@angular/router";
 import {FakeLoadingService} from "../../shared/services/fake-loading.service";
@@ -10,9 +10,11 @@ import {AuthService} from "../../shared/services/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit, OnDestroy{
   uname = new FormControl('');
   psw = new FormControl('');
+  logdout = false;
+
   loading:boolean = false;
 
   constructor(private router: Router, private loadingService: FakeLoadingService, private authService: AuthService) {
@@ -34,8 +36,15 @@ export class LoginComponent implements OnInit{
     this.loading = false;
     }*/
     this.authService.login(this.uname.value, this.psw.value).then(cred=>{
-
+        this.router.navigateByUrl('/main');
+        this.loading = false;
+    }).catch(error =>{
+      this.loading = false;
     });
 }
+  ngOnDestroy() {
+      this.logdout = true;
+      console.log("kijelentkezve");
+  }
 
 }

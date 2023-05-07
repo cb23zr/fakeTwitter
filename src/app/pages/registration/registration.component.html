@@ -3,11 +3,11 @@
 <form [formGroup]="signupForm" (ngSubmit)="OnSubmit()" >
   <mat-form-field>
   <mat-label> Felhasználónév: </mat-label><br>
-  <input matInput type="text" id="uname" name="uname" formControlName="uname"><br>
+  <input matInput type="text" id="username" name="username" formControlName="username"><br>
   </mat-form-field>
   <mat-form-field>
   <mat-label> Email cím: </mat-label><br>
-  <input matInput type="email" id="email" name="email" formControlName="email"><br>
+  <input matInput type="email" id="uname" name="uname" formControlName="uname"><br>
   </mat-form-field>
   <div formGroupName="name">
     <mat-form-field>
@@ -27,6 +27,7 @@
   <mat-label>Jelszó megerősítés: </mat-label><br>
   <input matInput type="password" id="repsw" name="repsw" formControlName="repsw"><br><br>
     </mat-form-field>
+
   <span class="button">
     <span>
     <button mat-raised-button color="accent" type="submit">Regisztráció</button>
